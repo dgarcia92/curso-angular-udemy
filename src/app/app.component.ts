@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LogginService } from './LogginService.service';
 import { Persona } from './persona.model';
 
 @Component({
@@ -16,9 +17,12 @@ export class AppComponent {
     new Persona('Karla', 'Lara')
   ];
 
+  constructor(private logginService:LogginService){}
+
   personaAgregada(persona: Persona)
   {
     this.personas.push(persona); 
+    this.logginService.enviaMensajeAConsola('Mensaje otro desde otro componente');
   }
 
 }
